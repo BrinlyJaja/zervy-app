@@ -162,6 +162,19 @@ body, html {
   .menu-links a {
     font-size: 2.5rem; /* mobile-friendly */
   }
+
+  .custom-cursor {
+    display: none;
+  }
+
+  /* On mobile: show default cursor and hide custom */
+  body {
+    cursor: default;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
 }
 
 .social-links {
@@ -203,4 +216,71 @@ body, html {
 
 .social-links a:hover {
   color: rgb(96, 97, 96);
+}
+
+/* Custom cursor */
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  pointer-events: none;
+  z-index: 9999;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  mix-blend-mode: difference;
+  /* Auto-inverts on contrast */
+}
+
+.custom-cursor.hovering {
+  transform: scale(1.5);
+}
+
+body,
+* {
+  cursor: none !important;
+}
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.hero-text {
+  font-size: 10vw;
+  line-height: 1.2;
+  z-index: 2;
+}
+
+.top-line,
+.bottom-line {
+  display: flex;
+  justify-content: center;
+  gap: 2vw;
+}
+
+.word-left,
+.word-right {
+  display: inline-block;
+  transition: transform 1s ease;
+}
+
+.intro-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  font-size: 6vw;
+  font-weight: 900;
+  opacity: 0;
+  z-index: 1;
+  color: var(--text-color);
+  transition: opacity 1s ease, transform 1s ease;
 }
