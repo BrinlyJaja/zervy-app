@@ -79,7 +79,7 @@ gsap.to(".social-links", {
       });
 
       // Optional: Swap logo back
-      if (logo) logo.src = "images/logo-black.png";
+      if (logo) logo.src = "images/Logo-black.png";
     }
   });
 });
