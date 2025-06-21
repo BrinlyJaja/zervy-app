@@ -1,0 +1,206 @@
+@font-face {
+  font-family: 'SK Modernist';
+  src: url('font/Sk-Modernist-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Basic Reset & Background */
+body, html {
+  margin: 0;
+  padding: 0;
+  background: #fdf6ed; /* cream background */
+  font-family: 'SK Modernist', sans-serif;
+  overflow-x: hidden;
+}
+
+.main {
+  padding: 100px 20px;
+  text-align: center;
+  color: #111;
+}
+
+/* Hamburger Icon */
+.hamburger {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 30px;
+  height: 25px;
+  z-index: 1001;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 100%;
+  background: #111;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Overlay Menu */
+#overlay-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  color: white;
+  display: none;
+  z-index: 1000;
+  transform: translateY(-100%);
+
+
+}
+
+.menu-content {
+  padding: 60px 30px;
+}
+.logo-home {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 120px;
+  z-index: 1001;
+}
+
+.logo-menu {
+  width: 120px;
+  margin-bottom: 40px;
+}
+
+.menu-links {
+  list-style: none;
+  padding: 0;
+  margin-top: 100px;
+}
+
+.menu-links li {
+   margin: 50px 0; /* plenty of breathing room */
+}
+
+.menu-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 4rem;        /* very large */
+  font-weight: 700;       /* bold */
+  letter-spacing: 0.1em;  /* spaced out */
+  text-transform: uppercase; /* optional for style */
+}
+
+.menu-links a {
+  display: inline-block;
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.menu-links a .char {
+  display: inline-block;
+  transition: transform 0.4s, color 0.4s;
+  transform-origin: bottom;
+}
+
+/* Hover effect */
+.menu-links a:hover .char {
+  transform: rotateX(360deg);
+  color: rgb(121, 124, 121); /* or white, or any color */
+}
+
+.menu-links a .char {
+  transition: transform 0.4s ease, color 0.4s;
+  display: inline-block;
+}
+
+.menu-links a:hover .char {
+  transform: rotateX(360deg);
+}
+
+.menu-links a .char:nth-child(1) { transition-delay: 0s; }
+.menu-links a .char:nth-child(2) { transition-delay: 0.05s; }
+.menu-links a .char:nth-child(3) { transition-delay: 0.1s; }
+/* ... you can go up to nth-child(20) or more */
+
+
+.hamburger span {
+  height: 3px;
+  width: 100%;
+  background: #111;
+  border-radius: 2px;
+  transition: all 0.4s ease;
+  transform-origin: center;
+}
+.hamburger.open span {
+  background: white; /* OR try lime, red, #fdf6ed, etc */
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+@media (max-width: 768px) {
+  .menu-links a {
+    font-size: 3rem; /* still big but fits smaller screens */
+  }
+  .menu-links li {
+    margin: 30px 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .menu-links a {
+    font-size: 2.5rem; /* mobile-friendly */
+  }
+}
+
+.social-links {
+  position: absolute;
+  bottom: 100px;
+  right: 40px;
+  text-align: right;
+  font-family: 'SK-Modernist-Regular', sans-serif;
+}
+
+.social-links span {
+  display: block;
+  margin-bottom: 15px;
+  color: #aaa;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.social-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.social-links li {
+  margin-bottom: 12px;
+}
+
+.social-links a {
+  color: white;
+  text-decoration: none;
+  font-size:  1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: rgb(96, 97, 96);
+}
