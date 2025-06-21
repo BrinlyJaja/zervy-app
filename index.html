@@ -15,7 +15,7 @@
       <ul class="menu-links">
         <li><a href="#">Home</a></li>
         <li><a href="#">Who Are We</a></li>
-        <li><a href="#">How DO We Help</a></li>
+        <li><a href="#">How We Work</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
 
@@ -48,5 +48,20 @@
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="script.js"></script>
+
+       <script>
+        // Initialize Vercel Analytics
+        window.va = window.va || function () { 
+            (window.vaq = window.vaq || []).push(arguments); 
+        };
+        
+        // Load the Analytics script
+        (function() {
+            const script = document.createElement('script');
+            script.src = '/_vercel/insights/script.js';
+            script.defer = true;
+            document.head.appendChild(script);
+        })();
+    </script>
 </body>
 </html>
