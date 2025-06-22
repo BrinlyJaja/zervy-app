@@ -123,6 +123,45 @@ body, html {
 .menu-links a .char:nth-child(2) { transition-delay: 0.05s; }
 .menu-links a .char:nth-child(3) { transition-delay: 0.1s; }
 /* ... you can go up to nth-child(20) or more */
+/* Fixed Hamburger Wrapper */
+.hamburger-wrapper {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  /* Ensure proper flex direction */
+  flex-direction: row;
+  /* Add some padding to prevent edge clipping */
+  padding: 5px;
+}
+.menu-label {
+  font-family: "SK Modernist", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #111;
+  transition: color 0.3s ease;
+  pointer-events: none;
+  /* Ensure text doesn't wrap */
+  white-space: nowrap;
+  /* Add some margin for extra spacing */
+  margin-right: 40px;
+}
+
+/* Update hamburger positioning since it's now in a wrapper */
+.hamburger {
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0; /* Prevent hamburger from shrinking */
+}
 
 
 .hamburger span {
@@ -240,6 +279,7 @@ body,
 * {
   cursor: none !important;
 }
+
 .hero {
   height: 100vh;
   display: flex;
@@ -283,4 +323,54 @@ body,
   z-index: 1;
   color: var(--text-color);
   transition: opacity 1s ease, transform 1s ease;
+}
+.about-section {
+  padding: 15 10vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 10vw;
+  overflow: hidden;
+  background: var(--bg-color);
+}
+
+.about-wrapper {
+  max-width: 750px;
+  height: 100%;
+  overflow-y: auto;
+  padding: 10vh 0;
+}
+
+
+#fade-paragraph {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  word-wrap: break-word;
+}
+
+.word {
+  display: inline-block;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    height: auto;
+    padding: 15vh 6vw;
+    display: flex;
+    align-items: flex-start;
+    justify-content:flex-start;
+  }
+
+  .about-wrapper {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  #fade-paragraph {
+    font-size: 1.0rem;
+    line-height: 1.6;
+  }
 }

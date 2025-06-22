@@ -37,8 +37,11 @@
   </div>
 
   <!-- Hamburger Icon -->
+   <div class="hamburger-wrapper">
+       <span class="menu-label">MENU</span>
   <div class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
+  </div>
   </div>
 
 <!-- Hero Section -->
@@ -55,6 +58,13 @@
   </div>
 
   <div class="intro-text">Introducing Zervy</div>
+</section>
+<section class="about-section">
+  <div class="about-wrapper">
+    <p id="fade-paragraph">
+      A service marketplace app that bridges the gap between customers and service providers, making it easier than ever to find, hire, and manage trusted local services. For customers, we offer real-time access to verified reviews, detailed provider portfolios, and smart filters that match you with professionals based on your location, budget, and needs — all with secure payment and refund protection.
+    </p>
+  </div>
 </section>
 
 
@@ -149,6 +159,31 @@
   }
 </script>
 
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Wrap each word in a span
+  const paragraph = document.getElementById("fade-paragraph");
+  const words = paragraph.innerText.split(" ");
+  paragraph.innerHTML = words
+    .map(word => `<span class="word">${word}&nbsp;</span>`)
+    .join("");
+
+  // Animate each word as you scroll
+  gsap.to(".word", {
+    scrollTrigger: {
+      trigger: ".about-section",
+      start: "top center",
+      end: "+=200%",
+      scrub: true,
+      pin: true,
+      anticipatePin: 1
+    },
+    opacity: 1,
+    stagger: 0.05,
+    ease: "none"
+  });
+</script>
 
 </body>
 </html>
