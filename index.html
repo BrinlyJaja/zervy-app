@@ -65,7 +65,26 @@
       A service marketplace app that bridges the gap between customers and service providers, making it easier than ever to find, hire, and manage trusted local services. For customers, we offer real-time access to verified reviews, detailed provider portfolios, and smart filters that match you with professionals based on your location, budget, and needs — all with secure payment and refund protection.
     </p>
   </div>
+
+  <div class="counter-glass">
+  <div class="counter-wrapper">
+    <span id="business-counter">0</span>
+   <span class="counter-label">
+    <span class="highlight">M+</span> micro businesses in Nigeria
+  </span>
+  </div>
+  </div>
 </section>
+<section class="about-section about-section-2">
+  <div class="about-wrapper about-wrapper-2">
+    <p id="fade-paragraph-2">
+      For service providers, we offer tools to grow your business with ease: manage appointments, track conversions, showcase your work, and get discovered by thousands of nearby clients. With secure, scam-resistant payments, your earnings and work are always protected. Seamless, reliable, and built for connection — Zervy brings the right people together, effortlessly.
+    </p>
+  </div>
+</section>
+
+
+
 
 
 
@@ -184,6 +203,57 @@
     ease: "none"
   });
 </script>
+
+<script>
+  // Second scroll-triggered animation
+  const paragraph2 = document.getElementById("fade-paragraph-2");
+  const words2 = paragraph2.innerText.split(" ");
+  paragraph2.innerHTML = words2
+    .map(word => `<span class="word-2">${word}&nbsp;</span>`)
+    .join("");
+
+  gsap.to(".word-2", {
+    scrollTrigger: {
+      trigger: ".about-section-2",
+      start: "top center",
+      end: "+=200%",
+      scrub: true,
+      pin: true,
+      anticipatePin: 1
+    },
+    opacity: 1,
+    stagger: 0.05,
+    ease: "none"
+  });
+</script>
+
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  let counterStarted = false;
+
+  ScrollTrigger.create({
+    trigger: ".about-section",
+    start: "top center", // fires only when .about-section hits center of viewport
+    once: true,
+    onEnter: () => {
+      if (!counterStarted) {
+        counterStarted = true;
+        let count = { val: 0 };
+        gsap.to(count, {
+          val: 40,
+          duration: 2,
+          ease: "power2.out",
+          onUpdate: () => {
+            document.getElementById("business-counter").textContent = Math.floor(count.val);
+          }
+        });
+      }
+    }
+  });
+</script>
+
 
 </body>
 </html>
