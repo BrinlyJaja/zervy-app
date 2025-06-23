@@ -438,20 +438,19 @@ body,
   transition: opacity 0.3s ease;
 }
 
- .counter-glass {
+.counter-glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 20px;
   border: 1.5px solid rgba(255, 255, 255, 0.3);
-  padding: 16px 40px;                  /* wider padding */
-  max-width: none;                     /* remove constraint */
-  min-width: 320px;                    /* ensure baseline width */
+  padding: 16px 24px;
+  width: auto;
+  min-width: 300px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  margin-top: 40px;
-  flex-shrink: 0;
 }
 
 .glass-left-box {
@@ -484,10 +483,6 @@ body,
   font-weight: 800;
   line-height: 1;
   color: var(--text-color);
-   font-variant-numeric: tabular-nums; /* Equal-width digits */
-  display: inline-block;
-  min-width: 4ch; /* Reserve enough space for 2 digits (e.g., 40) */
-  text-align: right;
 }
 
 .counter-label {
