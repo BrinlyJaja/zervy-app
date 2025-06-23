@@ -400,67 +400,96 @@ body,
   color: var(--text-color);
   transition: opacity 1s ease, transform 1s ease;
 }
-.about-section {
-  padding: 15 10vw;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0 10vw;
-  overflow: hidden;
+.about-section-combined {
   background: var(--bg-color);
+  padding: 10vh 10vw;
+  overflow: hidden;
+  align-items: flex-start;         /* text + box aligned to top */
+
 }
 
-.about-wrapper {
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10vh;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.row-1 .about-wrapper,
+.row-2 .about-wrapper-2 {
   max-width: 750px;
-  height: 100%;
-  overflow-y: auto;
-  padding: 10vh 0;
-
+  flex: 1;
 }
 
-
-#fade-paragraph {
+#fade-paragraph-1,
+#fade-paragraph-2 {
   font-size: 1.5rem;
   line-height: 1.8;
   color: var(--text-color);
   word-wrap: break-word;
 }
 
-.word {
+.word,
+.word-2 {
   display: inline-block;
   opacity: 0.2;
   transition: opacity 0.3s ease;
 }
 
+ .counter-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  padding: 16px 40px;                  /* wider padding */
+  max-width: none;                     /* remove constraint */
+  min-width: 320px;                    /* ensure baseline width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+  flex-shrink: 0;
+}
+
+.glass-left-box {
+  flex: 0 0 auto;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  padding: 20px 30px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+  font-size: 1.2rem;              /* slightly smaller base */
+  font-weight: 500;
+  line-height: 1.6;
+  word-break: break-word;         /* prevents overflow */
+  margin-top: 0;
+  text-align: center;
+}
+
 .counter-wrapper {
- display: flex;
+  display: flex;
   align-items: center;
   gap: 12px;
   flex-wrap: nowrap;
 }
-
 
 #business-counter {
   font-size: 6rem;
   font-weight: 800;
   line-height: 1;
   color: var(--text-color);
+   font-variant-numeric: tabular-nums; /* Equal-width digits */
+  display: inline-block;
+  min-width: 4ch; /* Reserve enough space for 2 digits (e.g., 40) */
+  text-align: right;
 }
 
-.counter-glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 20px;
-  border: 1.5px solid rgba(255, 255, 255, 0.3); /* brighter border */
-  padding: 20px 30px;
-  max-width: 450px;
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-}
 .counter-label {
   font-size: 1.5rem;
   font-weight: 500;
@@ -469,70 +498,9 @@ body,
   color: var(--text-color);
 }
 
-.counter-label .highlight {
-  font-weight: 800;
-  font-size: 3rem;
-  color: var(--text-color);
-}
-
-.about-section-2 {
-  padding: 0 10vw;
-  display: flex;
-  justify-content:space-between; ;
-  align-items: center;
-  overflow: hidden;
-  background: var(--bg-color);
-  min-height: 100vh;
-  gap: 40px;                       /* spacing between box and text */
-  flex-wrap: nowrap;  
-}
-
-.about-wrapper-2 {
-  max-width: 750px;
-  height: 100%;
-  padding: 10vh 0;
-}
-
-#fade-paragraph-2 {
-  font-size: 1.5rem;
-  line-height: 1.8;
-  color: var(--text-color);
-  word-wrap: break-word;
-}
-
-.word-2 {
-  display: inline-block;
-  opacity: 0.2;
-  transition: opacity 0.3s ease;
-}
-
-.glass-left-box {
-  flex: 0 0 45%;  /* fixed width box */
-  max-width: 400px;
-  align-self: flex-start;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 20px;
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  padding: 20px 30px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  color: var(--text-color);
-  font-size: 1.5rem;
-  font-weight: 500;
-  line-height: 1.6;
-   margin-top: 0;
-}
-
-.about-wrapper-2 {
-  flex: 1; /* take remaining space */
-  max-width: 750px;
-  padding: 0;
-}
-
-
+.counter-label .highlight,
 .glass-left-box .highlight {
   font-weight: 800;
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: var(--text-color);
 }
