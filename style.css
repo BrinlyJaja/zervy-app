@@ -444,8 +444,8 @@ body,
   -webkit-backdrop-filter: blur(12px);
   border-radius: 20px;
   border: 1.5px solid rgba(255, 255, 255, 0.3);
-  padding: 16px 24px;
-  width: auto;
+  padding: 16px 40px;
+  width:450px;
   min-width: 300px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   display: flex;
