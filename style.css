@@ -290,8 +290,6 @@ body, html {
   }
 }
 
-
-
 .social-links {
   position: absolute;
   bottom: 100px;
@@ -498,4 +496,37 @@ body,
   font-weight: 800;
   font-size: 3rem;
   color: var(--text-color);
+}
+
+.waitlist-glass {
+  position: fixed;
+  top: 30px;
+  right: 160px; /* Adjust to sit left of hamburger */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1 rem;
+  font-weight: 600;
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 999;
+  white-space: nowrap;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .waitlist-glass {
+    right: 100px;
+    font-size: 0.75rem;
+    padding: 8px 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .waitlist-glass {
+    display: none; /* Optional: hide on small screens */
+  }
 }

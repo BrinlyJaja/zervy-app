@@ -48,10 +48,6 @@ gsap.to(".social-links", {
   ease: "power2.in"
 });
 
-
-
-
-
       // Optional: Swap logo color if needed
       if (logo) logo.src = "images/logo-white.png";
 
