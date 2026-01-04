@@ -103,6 +103,112 @@ document.addEventListener('mousemove', (e) => {
   cursor.style.top = `${e.clientY}px`;
 });
 
+gsap.fromTo(
+  ".scroll-arrow",
+  { y: 0, opacity: 0.6 },
+  {
+    y: 12,
+    opacity: 1,
+    duration: 1,
+    ease: "power1.inOut",
+    repeat: -1,
+    yoyo: true
+  }
+);
+
+gsap.to(".scroll-indicator", {
+  opacity: 0,
+  scrollTrigger: {
+    trigger: ".hero",
+    start: "center center",
+    end: "bottom top",
+    scrub: true
+  }
+});
+
+// ===== Feature cards modal (with images) =====
+(() => {
+  const modal = document.getElementById("featureModal");
+  const titleEl = document.getElementById("featureModalTitle");
+  const subtitleEl = document.getElementById("featureModalSubtitle");
+  const detailEl = document.getElementById("featureModalDetail");
+  const kickerEl = document.getElementById("featureModalKicker");
+
+  const imgMain = document.getElementById("featureModalImgMain");
+  const img1 = document.getElementById("featureModalImg1");
+  const img2 = document.getElementById("featureModalImg2");
+
+  let lastFocused = null;
+
+  function openModal(card) {
+    lastFocused = document.activeElement;
+
+    kickerEl.textContent = card.dataset.kicker || "Feature";
+    titleEl.textContent = card.dataset.title || "Feature";
+    subtitleEl.textContent = card.dataset.subtitle || "";
+    detailEl.textContent = card.dataset.detail || "";
+
+    // Images (mock URLs for now)
+    imgMain.src = card.dataset.imgMain || "";
+    img1.src = card.dataset.img1 || "";
+    img2.src = card.dataset.img2 || "";
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+
+    // focus close button for accessibility
+    const closeBtn = modal.querySelector("[data-close]");
+    closeBtn && closeBtn.focus();
+
+    // prevent body scroll while modal open
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
+
+    if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+  }
+
+  // Click anywhere on card OR plus opens
+  document.querySelectorAll(".feature-card").forEach((card) => {
+    card.addEventListener("click", () => openModal(card));
+
+    // Keyboard support (Enter / Space)
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openModal(card);
+      }
+    });
+
+    const plus = card.querySelector(".feature-plus");
+    if (plus) {
+      plus.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal(card);
+      });
+    }
+  });
+
+  // Close: click backdrop or close btn
+  modal.addEventListener("click", (e) => {
+    if (e.target.matches("[data-close]")) closeModal();
+  });
+
+  // Close: ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
+})();
 
 
 

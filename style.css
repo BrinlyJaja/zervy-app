@@ -364,13 +364,14 @@ body,
   overflow: hidden;
   text-align: center;
   font-weight: bold;
-  color: var(--text-color);
+  color: #BE5103;;
 }
 
 .hero-text {
   font-size: 10vw;
   line-height: 1.2;
   z-index: 2;
+  transform: translateY(-6vh);
 }
 
 .top-line,
@@ -388,11 +389,12 @@ body,
 
 .intro-text {
   position: absolute;
-  top: 50%;
+  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.8);
-  font-size: 6vw;
+  font-size: clamp(3rem, 6.5vw, 6rem);
   font-weight: 900;
+  white-space: nowrap;   
   opacity: 0;
   z-index: 1;
   color: var(--text-color);
@@ -529,4 +531,322 @@ body,
   .waitlist-glass {
     display: none; /* Optional: hide on small screens */
   }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 26vh;              /* 🔥 move it UP */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.scroll-text {
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #111;
+}
+
+.scroll-dot {
+  width: 6px;
+  height: 6px;
+  background: #111;
+  border-radius: 50%;
+}
+
+.scroll-arrow {
+  font-size: 1.5rem;
+  color: #111;
+  animation: scrollBounce 1.6s infinite ease-in-out;
+}
+
+.scroll-subtext {
+  font-size: 0.75rem;
+  color: #555;
+}
+
+/* Subtle bounce */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ===== Features Section ===== */
+.features-section{
+  padding: 10vh 10vw;
+  background: var(--bg-color);
+}
+
+.features-title{
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  letter-spacing: -0.02em;
+  margin: 0 0 30px 0;
+  color: var(--text-color);
+}
+
+/* Horizontal rail (with scrollbar) */
+.features-rail{
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  padding: 10px 6px 22px 6px; /* bottom padding to show scrollbar cleanly */
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Make the scrollbar visible and clean */
+.features-rail::-webkit-scrollbar{
+  height: 10px;
+}
+.features-rail::-webkit-scrollbar-track{
+  background: rgba(0,0,0,0.08);
+  border-radius: 999px;
+}
+.features-rail::-webkit-scrollbar-thumb{
+  background: rgba(0,0,0,0.22);
+  border-radius: 999px;
+}
+.features-rail{
+  scrollbar-color: rgba(0,0,0,0.22) rgba(0,0,0,0.08); /* Firefox */
+  scrollbar-width: thin;
+}
+
+/* Card */
+.feature-card{
+  position: relative;
+  flex: 0 0 360px;
+  height: 460px;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255,255,255,0.45);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.10);
+  padding: 26px 26px 26px 26px;
+  scroll-snap-align: start;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transform: translateY(0);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Lift on hover */
+.feature-card:hover,
+.feature-card:focus-visible{
+  transform: translateY(-10px);
+  box-shadow: 0 22px 55px rgba(0,0,0,0.14);
+}
+
+.feature-kicker{
+  margin: 0 0 10px 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  opacity: 0.75;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.feature-headline{
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-color);
+  font-weight: 800;
+}
+
+/* Plus button */
+.feature-plus{
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(255,255,255,0.6);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  color: #111;
+  font-size: 26px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.feature-card:hover .feature-plus{
+  transform: scale(1.05);
+}
+
+/* ===== Modal ===== */
+.feature-modal{
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none; /* toggled by JS */
+}
+
+.feature-modal.is-open{
+  display: block;
+}
+
+.feature-modal-backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.30);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.feature-modal-card{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(720px, calc(100% - 40px));
+  border-radius: 28px;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255,255,255,0.55);
+  box-shadow: 0 26px 80px rgba(0,0,0,0.18);
+  padding: 28px 28px 30px;
+  color: #111;
+}
+
+.feature-modal-close{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(255,255,255,0.75);
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.feature-modal-kicker{
+  margin: 0 0 8px 0;
+  opacity: 0.75;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.feature-modal-title{
+  margin: 0 0 8px 0;
+  font-size: clamp(1.7rem, 2.6vw, 2.4rem);
+  font-weight: 900;
+}
+
+.feature-modal-subtitle{
+  margin: 0 0 14px 0;
+  font-size: 1.1rem;
+  opacity: 0.85;
+  font-weight: 600;
+}
+
+.feature-modal-detail{
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px){
+  .features-section{
+    padding: 8vh 6vw;
+  }
+  .feature-card{
+    flex-basis: 300px;
+    height: 420px;
+  }
+  .feature-headline{
+    font-size: 1.7rem;
+  }
+}
+
+/* ===== Feature card media ===== */
+.feature-subcopy{
+  margin: 10px 0 0 0;
+  font-size: 1rem;
+  opacity: 0.78;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.feature-media{
+  margin-top: 18px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.06);
+  height: 260px;             /* controls image block size like Apple */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Move + to bottom-right like Apple */
+.feature-plus{
+  left: auto;
+  right: 18px;
+}
+
+/* ===== Modal gallery ===== */
+.feature-modal-gallery{
+  margin: 18px 0 14px;
+  display: grid;
+  gap: 14px;
+}
+
+.feature-modal-img{
+  width: 100%;
+  border-radius: 18px;
+  display: block;
+  object-fit: cover;
+  background: rgba(0,0,0,0.06);
+}
+
+.feature-modal-img-main{
+  height: 320px;
+}
+
+.feature-modal-img-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.feature-modal-img-row .feature-modal-img{
+  height: 200px;
+}
+
+@media (max-width: 768px){
+  .feature-media{ height: 230px; }
+  .feature-modal-img-main{ height: 240px; }
+  .feature-modal-img-row .feature-modal-img{ height: 160px; }
+  .feature-modal-img-row{ grid-template-columns: 1fr; }
 }
