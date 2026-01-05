@@ -796,7 +796,7 @@ body,
   border-radius: 22px;
   overflow: hidden;
   background: rgba(0,0,0,0.06);
-  height: 260px;             /* controls image block size like Apple */
+  height: 300px;             /* controls image block size like Apple */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -831,7 +831,7 @@ body,
 }
 
 .feature-modal-img-main{
-  height: 320px;
+  height: 360px;
 }
 
 .feature-modal-img-row{
