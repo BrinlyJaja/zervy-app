@@ -294,3 +294,62 @@ gsap.to(".scroll-indicator", {
   });
 })();
 
+// Directory category filters and location search preview.
+(() => {
+  const cards = [...document.querySelectorAll('.directory-card')];
+  const filters = [...document.querySelectorAll('.directory-filter')];
+  const searchForm = document.getElementById('directorySearch');
+  const searchInput = document.getElementById('directoryLocation');
+  const searchStatus = document.querySelector('.directory-search-status');
+  if (!cards.length || !filters.length) return;
+
+  function showCategory(category) {
+    cards.forEach((card) => {
+      card.hidden = category !== 'all' && card.dataset.serviceCategory !== category;
+    });
+    filters.forEach((filter) => {
+      const active = filter.dataset.categoryFilter === category;
+      filter.classList.toggle('is-active', active);
+      filter.setAttribute('aria-pressed', String(active));
+    });
+  }
+
+  filters.forEach((filter) => {
+    filter.addEventListener('click', () => {
+      showCategory(filter.dataset.categoryFilter);
+      if (searchStatus) searchStatus.textContent = '';
+    });
+  });
+
+  if (searchForm && searchInput) {
+    const categoryKeywords = {
+      beauty: ['beauty', 'hair', 'barber', 'makeup', 'wellness'],
+      trades: ['trade', 'electrician', 'mechanic', 'bricklayer', 'plumber', 'maintenance', 'repair'],
+      lifestyle: ['home', 'lifestyle', 'tailor', 'tailoring', 'garden', 'gardening', 'landscaping'],
+      events: ['event', 'photographer', 'photo', 'dj', 'creative', 'planner'],
+      professional: ['professional', 'lawyer', 'legal', 'engineer', 'engineering', 'consulting']
+    };
+    searchForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const value = searchInput.value.trim().toLowerCase();
+      if (!value) {
+        if (searchStatus) searchStatus.textContent = 'Enter a service or location to preview matching categories.';
+        searchInput.focus();
+        return;
+      }
+      const category = Object.entries(categoryKeywords).find(([, keywords]) =>
+        keywords.some((keyword) => value.includes(keyword))
+      )?.[0];
+      if (category) {
+        showCategory(category);
+        const categoryName = filters.find((filter) => filter.dataset.categoryFilter === category)?.textContent.trim();
+        if (searchStatus) searchStatus.textContent = `Showing ${categoryName} services. Live local results are coming soon.`;
+      } else {
+        showCategory('all');
+        if (searchStatus) searchStatus.textContent = 'Showing all service categories. Live local results are coming soon.';
+      }
+      document.getElementById('directoryGrid')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  }
+})();
+

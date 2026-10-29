@@ -271,6 +271,59 @@
   </div>
 </section>
 
+<section class="directory-section" id="directory" aria-labelledby="directory-title">
+  <div class="directory-heading">
+    <p class="section-eyebrow">Services, all in one place</p>
+    <h2 id="directory-title">Find every pro for every project in your location.</h2>
+    <p>From daily wellness and personal care to specialized trades, technical installations, and legal advice, Zervy connects you with trusted local pros.</p>
+  </div>
+
+  <div class="directory-filters" role="group" aria-label="Filter service categories">
+    <button class="directory-filter is-active" type="button" data-category-filter="all" aria-pressed="true">All Services</button>
+    <button class="directory-filter" type="button" data-category-filter="beauty" aria-pressed="false">Beauty &amp; Wellness</button>
+    <button class="directory-filter" type="button" data-category-filter="trades" aria-pressed="false">Trades &amp; Repairs</button>
+    <button class="directory-filter" type="button" data-category-filter="lifestyle" aria-pressed="false">Home &amp; Lifestyle</button>
+    <button class="directory-filter" type="button" data-category-filter="events" aria-pressed="false">Events &amp; Creative</button>
+    <button class="directory-filter" type="button" data-category-filter="professional" aria-pressed="false">Professional &amp; Legal</button>
+  </div>
+
+  <div class="directory-grid" id="directoryGrid" aria-live="polite">
+    <article class="directory-card" data-service-category="beauty">
+      <img class="directory-card-image" src="images/barbers.png" alt="Beauty and wellness service preview" loading="lazy" />
+      <div class="directory-card-shade" aria-hidden="true"></div>
+      <div class="directory-card-content"><span class="directory-badge"><span aria-hidden="true">✓</span> Verified Pros Nearby</span><h3>Beauty &amp; Wellness</h3><p>Barbers, Hair Stylists, Nail Artists, Day Spas, Medical Spas, Makeup Artists</p></div>
+    </article>
+    <article class="directory-card" data-service-category="trades">
+      <img class="directory-card-image" src="images/plumbers.png" alt="Trades and repairs service preview" loading="lazy" />
+      <div class="directory-card-shade" aria-hidden="true"></div>
+      <div class="directory-card-content"><span class="directory-badge"><span aria-hidden="true">✓</span> Verified Pros Nearby</span><h3>Trades &amp; Repairs</h3><p>Plumbing, Electricians, Mechanics, Appliance Repair, Bricklayers, Roofers, Pest Control</p></div>
+    </article>
+    <article class="directory-card" data-service-category="lifestyle">
+      <img class="directory-card-image" src="images/Rectangle%2042.png" alt="Home and lifestyle service preview" loading="lazy" />
+      <div class="directory-card-shade" aria-hidden="true"></div>
+      <div class="directory-card-content"><span class="directory-badge"><span aria-hidden="true">✓</span> Verified Pros Nearby</span><h3>Home &amp; Lifestyle</h3><p>Tailoring, Gardening &amp; Landscaping</p></div>
+    </article>
+    <article class="directory-card" data-service-category="events">
+      <img class="directory-card-image" src="images/photographer.png" alt="Events and creative service preview" loading="lazy" />
+      <div class="directory-card-shade" aria-hidden="true"></div>
+      <div class="directory-card-content"><span class="directory-badge"><span aria-hidden="true">✓</span> Verified Pros Nearby</span><h3>Events &amp; Creative</h3><p>Photographers, DJs, Event Planners &amp; Coordination</p></div>
+    </article>
+    <article class="directory-card" data-service-category="professional">
+      <img class="directory-card-image" src="images/tingey-injury-law-firm-DZpc4UY8ZtY-unsplash.jpg" alt="Professional and legal service preview" loading="lazy" />
+      <div class="directory-card-shade" aria-hidden="true"></div>
+      <div class="directory-card-content"><span class="directory-badge"><span aria-hidden="true">✓</span> Verified Pros Nearby</span><h3>Professional &amp; Legal</h3><p>Lawyers &amp; Legal Advice, Civil Engineers, Contracting</p></div>
+    </article>
+  </div>
+
+  <form class="directory-search" id="directorySearch">
+    <span class="directory-search-icon" aria-hidden="true">⌕</span>
+    <label class="visually-hidden" for="directoryLocation">Search services in your area</label>
+    <input id="directoryLocation" type="search" placeholder="Find services near you (e.g., Tailor in Lagos, Electrician in Abuja)..." />
+    <button type="submit">Explore Nearby Pros <span aria-hidden="true">→</span></button>
+    <p class="directory-search-status" role="status" aria-live="polite"></p>
+  </form>
+</section>
+
 <section class="faq-section" id="faq" aria-labelledby="faq-title">
   <div class="faq-heading">
     <p class="section-eyebrow">A few good questions</p>
