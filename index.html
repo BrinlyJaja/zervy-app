@@ -16,10 +16,11 @@
     <div class="menu-content">
      
       <ul class="menu-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Who Are We</a></li>
-        <li><a href="#">How We Work</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Get to Know Zervy</a></li>
+        <li><a href="#home-features">Features</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#waitlist">Waitlist</a></li>
       </ul>
 
       <div class="social-links">
@@ -37,9 +38,7 @@
     </div>
   </div>
 
-  <div class="waitlist-glass">
-  Join Our Waitlist
-</div>
+  <a class="waitlist-glass" href="#waitlist">Join Our Waitlist <span aria-hidden="true">↗</span></a>
 
   <!-- Hamburger Icon -->
    <div class="hamburger-wrapper">
@@ -50,7 +49,7 @@
   </div>
 
 <!-- Hero Section -->
-<section class="main hero">
+<section class="main hero" id="home">
   <div class="hero-text">
     <div class="top-line">
       <span class="word-left">ONE</span>
@@ -74,32 +73,37 @@
 
 
   
-<section class="about-section-combined">
-  <div class="row row-1">
-    <div class="about-wrapper">
-      <p id="fade-paragraph-1">
-        A service marketplace app that bridges the gap between customers and service providers, making it easier than ever to find, hire, and manage trusted local services. For customers, we offer real-time access to verified reviews, detailed provider portfolios, and smart filters that match you with professionals based on your location, budget, and needs — all with secure payment and refund protection.
-      </p>
-    </div>
-
-    <div class="counter-glass">
-      <div class="counter-wrapper">
-        <span id="business-counter">0</span>
-        <span class="counter-label">
-          <span class="highlight">M+</span> micro businesses in Nigeria
-        </span>
-      </div>
-    </div>
+<section class="about-section-combined" id="home-features" aria-labelledby="why-zervy-title">
+  <div class="about-heading">
+    <p class="section-eyebrow">One app. More confidence.</p>
+    <h2 id="why-zervy-title">The right tools for every side of the service.</h2>
   </div>
-
-  <div class="row row-2">
-    <div class="glass-left-box">
-      <p>But <span class="highlight">80%</span> of these businesses fail in their first year</p>
+  <div class="audience-layout">
+    <div class="stats-stack" aria-label="The opportunity for local businesses">
+      <article class="stat-card stat-card-primary">
+        <strong>40M<span>+</span></strong>
+        <p>micro businesses in Nigeria</p>
+      </article>
+      <article class="stat-card stat-card-secondary">
+        <strong>80<span>%</span></strong>
+        <p>of these businesses fail in their first year</p>
+      </article>
     </div>
-    <div class="about-wrapper-2">
-      <p id="fade-paragraph-2">
-        For service providers, we offer tools to grow your business with ease: manage appointments, track conversions, showcase your work, and get discovered by thousands of nearby clients. With secure, scam-resistant payments, your earnings and work are always protected. Seamless, reliable, and built for connection — Zervy brings the right people together, effortlessly.
-      </p>
+    <div class="audience-panel">
+      <div class="audience-tabs" role="tablist" aria-label="Explore Zervy features">
+        <button class="audience-tab is-active" id="customers-tab" type="button" role="tab" aria-selected="true" aria-controls="customers-panel">For Customers</button>
+        <button class="audience-tab" id="businesses-tab" type="button" role="tab" aria-selected="false" aria-controls="businesses-panel" tabindex="-1">For Businesses</button>
+      </div>
+      <div class="audience-content" id="customers-panel" role="tabpanel" aria-labelledby="customers-tab">
+        <article class="audience-feature"><span class="micro-icon" aria-hidden="true">⌕</span><div><h3>Smart AI Search</h3><p>Find the right local pro for your needs.</p></div><span class="feature-index">01</span></article>
+        <article class="audience-feature"><span class="micro-icon" aria-hidden="true">▦</span><div><h3>Instant Calendar Booking</h3><p>Choose a time that works, in a few taps.</p></div><span class="feature-index">02</span></article>
+        <article class="audience-feature"><span class="micro-icon" aria-hidden="true">↗</span><div><h3>Scam-Protected Payments</h3><p>Book with confidence from start to finish.</p></div><span class="feature-index">03</span></article>
+      </div>
+      <div class="audience-content" id="businesses-panel" role="tabpanel" aria-labelledby="businesses-tab" hidden>
+        <article class="audience-feature"><span class="micro-icon" aria-hidden="true">✳</span><div><h3>AI Employee Performance Tracking</h3><p>Understand how your team is doing.</p></div><span class="feature-index">01</span></article>
+        <article class="audience-feature"><span class="micro-icon" aria-hidden="true">◎</span><div><h3>Automated Monthly Revenue Goals</h3><p>Set clear targets and follow progress.</p></div><span class="feature-index">02</span></article>
+        <article class="audience-feature"><span class="micro-icon" aria-hidden="true">⌁</span><div><h3>Live Booking Analytics</h3><p>See bookings and trends as they happen.</p></div><span class="feature-index">03</span></article>
+      </div>
     </div>
   </div>
 </section>
@@ -112,14 +116,15 @@
     <article
       class="feature-card"
       tabindex="0"
-      role="button"
-      aria-label="Open feature: Booking"
+      role="group"
+      aria-label="Booking feature"
       data-kicker="Booking"
       data-title="Book in seconds."
       data-subtitle="Calendar-based booking with time slots, reminders, and clean confirmations."
       data-detail="Users can pick dates and times, providers manage availability, and everyone gets clear appointment details and updates."
-      data-img-main="images/feature.png"
-      data-img-1="images/feature.png"
+      data-image-src="images/Shot.png"
+      data-img-main="images/Shot.png"
+      data-img-1="images/medium.png"
       data-img-2="images/final.png"
     >
       <div class="feature-top">
@@ -137,22 +142,23 @@
         />
       </div>
 
-      <button class="feature-plus" aria-label="Open Booking details" type="button">+</button>
+      <button class="feature-learn-more" aria-label="Learn more about Booking" type="button">Learn More <span aria-hidden="true">→</span></button>
     </article>
 
     <!-- 2 -->
     <article
       class="feature-card"
       tabindex="0"
-      role="button"
-      aria-label="Open feature: AI Insights"
+      role="group"
+      aria-label="AI Insights feature"
       data-kicker="AI Insights"
       data-title="Smarter decisions."
       data-subtitle="AI analytics + suggestions that help providers grow."
       data-detail="Providers get trend insights, pricing suggestions, and performance analytics — tailored to their service category and location."
-      data-img-main="https://picsum.photos/seed/zervy-ai-main/900/700"
-      data-img-1="https://picsum.photos/seed/zervy-ai-1/900/700"
-      data-img-2="https://picsum.photos/seed/zervy-ai-2/900/700"
+      data-image-src="images/feature.png"
+      data-img-main="images/feature.png"
+      data-img-1="images/medium.png"
+      data-img-2="images/final.png"
     >
       <div class="feature-top">
         <p class="feature-kicker">AI Insights</p>
@@ -161,25 +167,26 @@
       </div>
 
       <div class="feature-media">
-        <img class="feature-img" src="https://picsum.photos/seed/zervy-ai-main/900/700" alt="AI feature preview" loading="lazy" />
+        <img class="feature-img" src="images/feature.png" alt="AI Insights feature preview" loading="lazy" />
       </div>
 
-      <button class="feature-plus" aria-label="Open AI Insights details" type="button">+</button>
+      <button class="feature-learn-more" aria-label="Learn more about AI Insights" type="button">Learn More <span aria-hidden="true">→</span></button>
     </article>
 
     <!-- 3 -->
     <article
       class="feature-card"
       tabindex="0"
-      role="button"
-      aria-label="Open feature: Live Tracking"
+      role="group"
+      aria-label="Live Tracking feature"
       data-kicker="Live Tracking"
       data-title="Know where they are."
       data-subtitle="Real-time location tracking and ETA updates."
       data-detail="Customers can track providers en route, see ETAs, and share booking location info with trusted contacts."
-      data-img-main="https://picsum.photos/seed/zervy-track-main/900/700"
-      data-img-1="https://picsum.photos/seed/zervy-track-1/900/700"
-      data-img-2="https://picsum.photos/seed/zervy-track-2/900/700"
+      data-image-src="images/final.png"
+      data-img-main="images/final.png"
+      data-img-1="images/medium.png"
+      data-img-2="images/Shot.png"
     >
       <div class="feature-top">
         <p class="feature-kicker">Live Tracking</p>
@@ -188,94 +195,80 @@
       </div>
 
       <div class="feature-media">
-        <img class="feature-img" src="https://picsum.photos/seed/zervy-track-main/900/700" alt="Tracking feature preview" loading="lazy" />
+        <img class="feature-img" src="images/final.png" alt="Live Tracking feature preview" loading="lazy" />
       </div>
 
-      <button class="feature-plus" aria-label="Open Live Tracking details" type="button">+</button>
+      <button class="feature-learn-more" aria-label="Learn more about Live Tracking" type="button">Learn More <span aria-hidden="true">→</span></button>
     </article>
 
-    <!-- 4 -->
-    <article
-      class="feature-card"
-      tabindex="0"
-      role="button"
-      aria-label="Open feature: Safety"
-      data-kicker="Safety"
-      data-title="Built-in protection."
-      data-subtitle="Emergency assistance and safety tools in-app."
-      data-detail="Quick access to emergency support, trusted contact sharing, and scam-resistant flows that protect customers and providers."
-      data-img-main="https://picsum.photos/seed/zervy-safety-main/900/700"
-      data-img-1="https://picsum.photos/seed/zervy-safety-1/900/700"
-      data-img-2="https://picsum.photos/seed/zervy-safety-2/900/700"
-    >
-      <div class="feature-top">
-        <p class="feature-kicker">Safety</p>
-        <h3 class="feature-headline">Built-in protection.</h3>
-        <p class="feature-subcopy">Emergency tools.</p>
-      </div>
-
-      <div class="feature-media">
-        <img class="feature-img" src="https://picsum.photos/seed/zervy-safety-main/900/700" alt="Safety feature preview" loading="lazy" />
-      </div>
-
-      <button class="feature-plus" aria-label="Open Safety details" type="button">+</button>
-    </article>
-
-    <!-- 5 -->
-    <article
-      class="feature-card"
-      tabindex="0"
-      role="button"
-      aria-label="Open feature: Verification"
-      data-kicker="Verification"
-      data-title="Verified providers."
-      data-subtitle="Vetted identity checks before dashboard access."
-      data-detail="Strong identity verification to reduce fraud and improve trust — especially for service marketplaces."
-      data-img-main="https://picsum.photos/seed/zervy-verify-main/900/700"
-      data-img-1="https://picsum.photos/seed/zervy-verify-1/900/700"
-      data-img-2="https://picsum.photos/seed/zervy-verify-2/900/700"
-    >
-      <div class="feature-top">
-        <p class="feature-kicker">Verification</p>
-        <h3 class="feature-headline">Verified providers.</h3>
-        <p class="feature-subcopy">Trust first.</p>
-      </div>
-
-      <div class="feature-media">
-        <img class="feature-img" src="https://picsum.photos/seed/zervy-verify-main/900/700" alt="Verification feature preview" loading="lazy" />
-      </div>
-
-      <button class="feature-plus" aria-label="Open Verification details" type="button">+</button>
-    </article>
-
-    <!-- 6 -->
-    <article
-      class="feature-card"
-      tabindex="0"
-      role="button"
-      aria-label="Open feature: Payments"
-      data-kicker="Payments"
-      data-title="Secure payments."
-      data-subtitle="Protected transactions and refund-safe flows."
-      data-detail="Integrated payments that reduce scams, protect both sides, and keep the marketplace smooth and reliable."
-      data-img-main="https://picsum.photos/seed/zervy-pay-main/900/700"
-      data-img-1="https://picsum.photos/seed/zervy-pay-1/900/700"
-      data-img-2="https://picsum.photos/seed/zervy-pay-2/900/700"
-    >
-      <div class="feature-top">
-        <p class="feature-kicker">Payments</p>
-        <h3 class="feature-headline">Secure payments.</h3>
-        <p class="feature-subcopy">Scam-resistant flow.</p>
-      </div>
-
-      <div class="feature-media">
-        <img class="feature-img" src="https://picsum.photos/seed/zervy-pay-main/900/700" alt="Payments feature preview" loading="lazy" />
-      </div>
-
-      <button class="feature-plus" aria-label="Open Payments details" type="button">+</button>
-    </article>
   </div>
 </section>
+
+<section class="faq-section" id="faq" aria-labelledby="faq-title">
+  <div class="faq-heading">
+    <p class="section-eyebrow">A few good questions</p>
+    <h2 id="faq-title">Frequently asked.</h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary><span>How does Zervy’s AI help match customers with service providers?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+      <p>Zervy uses your service needs, location, budget, and provider information to help surface professionals who are a better fit for the job.</p>
+    </details>
+    <details class="faq-item">
+      <summary><span>How do businesses track employee performance and monthly revenue goals?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+      <p>Business tools bring bookings, team activity, and revenue progress into one place, so owners can follow performance and monthly targets.</p>
+    </details>
+    <details class="faq-item">
+      <summary><span>Is payment on Zervy secure and protected against scams?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+      <p>Zervy is designed with protected payment flows to help customers and providers transact with more confidence and reduce the risk of scams.</p>
+    </details>
+    <details class="faq-item">
+      <summary><span>How can my business join the Zervy platform in Africa?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+      <p>Join the waitlist and we’ll share updates as Zervy opens to service businesses across Africa.</p>
+    </details>
+  </div>
+</section>
+
+<section class="waitlist-section" id="waitlist" aria-labelledby="waitlist-title">
+  <div class="waitlist-card">
+    <div class="waitlist-copy">
+      <p class="section-eyebrow">Be first in line</p>
+      <h2 id="waitlist-title">Ready to transform how you book and run services?</h2>
+      <p>Get early access updates from Zervy and help shape the future of services across Africa.</p>
+    </div>
+    <form class="waitlist-form">
+      <label class="visually-hidden" for="waitlist-email">Email address</label>
+      <input id="waitlist-email" name="email" type="email" placeholder="Your email address" autocomplete="email" required />
+      <button type="submit">Join Waitlist <span aria-hidden="true">→</span></button>
+      <p class="waitlist-form-message" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer" id="contact">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a class="footer-logo" href="#home" aria-label="Zervy home">ZERVY<span>.</span></a>
+      <p>Connecting services across Africa</p>
+    </div>
+    <div class="footer-column">
+      <h2>Explore</h2>
+      <a href="#home">Home</a>
+      <a href="#features">Get to Know Zervy</a>
+      <a href="#home-features">Features</a>
+      <a href="#faq">FAQ</a>
+      <a href="#waitlist">Waitlist</a>
+    </div>
+    <div class="footer-column">
+      <h2>Connect</h2>
+      <a href="https://instagram.com/yourhandle" target="_blank" rel="noreferrer">Instagram ↗</a>
+      <a href="https://linkedin.com/in/yourhandle" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+      <a href="https://x.com/yourhandle" target="_blank" rel="noreferrer">X ↗</a>
+      <a href="mailto:support@zervy.com">support@zervy.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Zervy. All rights reserved.</span><a href="#home">Back to top ↑</a></div>
+</footer>
 
 <!-- Modal (one modal reused for all cards) -->
 <div class="feature-modal" id="featureModal" aria-hidden="true">
@@ -399,76 +392,6 @@
   }
 </script>
 
-<script>
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Wrap both paragraphs in spans
-  function wrapWords(paragraphId, className) {
-    const para = document.getElementById(paragraphId);
-    const words = para.innerText.split(" ");
-    para.innerHTML = words
-      .map(word => `<span class="${className}">${word}&nbsp;</span>`)
-      .join("");
-  }
-
-  wrapWords("fade-paragraph-1", "word");
-  wrapWords("fade-paragraph-2", "word-2");
-
-  // Scroll-triggered animation timeline
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".about-section-combined",
-      start: "top top",
-      end: "+=300%",
-      scrub: true,
-      pin: true,
-      anticipatePin: 1
-    }
-  });
-
-  // Animate first paragraph
-  tl.to(".word", {
-    opacity: 1,
-    stagger: 0.05,
-    ease: "none"
-  }, 0);
-
-  // Animate second paragraph
-  tl.to(".word-2", {
-    opacity: 1,
-    stagger: 0.05,
-    ease: "none"
-  }, ">+=0.3"); // starts after paragraph 1 finishes
-</script>
-
-
-
-
-<script>
-  gsap.registerPlugin(ScrollTrigger);
-
-  let counterStarted = false;
-
-  ScrollTrigger.create({
-    trigger: ".about-section-combined",
-    start: "top center", // fires only when .about-section hits center of viewport
-    once: true,
-    onEnter: () => {
-      if (!counterStarted) {
-        counterStarted = true;
-        let count = { val: 0 };
-        gsap.to(count, {
-          val: 40,
-          duration: 2,
-          ease: "power2.out",
-          onUpdate: () => {
-            document.getElementById("business-counter").textContent = Math.floor(count.val);
-          }
-        });
-      }
-    }
-  });
-</script>
 
 
 </body>

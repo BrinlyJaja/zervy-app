@@ -140,6 +140,14 @@ gsap.to(".scroll-indicator", {
 
   let lastFocused = null;
 
+  function setImageSource(image, source, fallback) {
+    image.onerror = fallback ? () => {
+      image.onerror = null;
+      image.src = fallback;
+    } : null;
+    image.src = source || fallback || "";
+  }
+
   function openModal(card) {
     lastFocused = document.activeElement;
 
@@ -149,9 +157,11 @@ gsap.to(".scroll-indicator", {
     detailEl.textContent = card.dataset.detail || "";
 
     // Images (mock URLs for now)
-    imgMain.src = card.dataset.imgMain || "";
-    img1.src = card.dataset.img1 || "";
-    img2.src = card.dataset.img2 || "";
+    const mainImage = card.dataset.imageSrc || card.dataset.imgMain || "";
+    const fallbackImage = card.dataset.imageFallback || "";
+    setImageSource(imgMain, mainImage, fallbackImage);
+    setImageSource(img1, card.dataset.img1 || mainImage, fallbackImage);
+    setImageSource(img2, card.dataset.img2 || mainImage, fallbackImage);
 
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
@@ -175,9 +185,12 @@ gsap.to(".scroll-indicator", {
     if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
   }
 
-  // Click anywhere on card OR plus opens
+  // Click anywhere on a card or its Learn More button opens the modal.
   document.querySelectorAll(".feature-card").forEach((card) => {
-    card.addEventListener("click", () => openModal(card));
+    card.addEventListener("click", () => {
+      card.focus();
+      openModal(card);
+    });
 
     // Keyboard support (Enter / Space)
     card.addEventListener("keydown", (e) => {
@@ -187,13 +200,20 @@ gsap.to(".scroll-indicator", {
       }
     });
 
-    const plus = card.querySelector(".feature-plus");
-    if (plus) {
-      plus.addEventListener("click", (e) => {
+    const learnMore = card.querySelector(".feature-learn-more");
+    if (learnMore) {
+      learnMore.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
         openModal(card);
       });
+    }
+
+    const preview = card.querySelector(".feature-img");
+    if (preview && card.dataset.imageFallback) {
+      preview.addEventListener("error", () => {
+        preview.src = card.dataset.imageFallback;
+      }, { once: true });
     }
   });
 
@@ -210,5 +230,51 @@ gsap.to(".scroll-indicator", {
   });
 })();
 
+// Audience tabs support pointer and keyboard navigation.
+(() => {
+  const tabs = [...document.querySelectorAll('.audience-tab')];
+  const panels = [...document.querySelectorAll('.audience-content')];
+  if (!tabs.length || !panels.length) return;
 
+  function activateTab(tab, focus = false) {
+    tabs.forEach((item) => {
+      const selected = item === tab;
+      item.classList.toggle('is-active', selected);
+      item.setAttribute('aria-selected', String(selected));
+      item.tabIndex = selected ? 0 : -1;
+    });
+    panels.forEach((panel) => { panel.hidden = panel.id !== tab.getAttribute('aria-controls'); });
+    if (focus) tab.focus();
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateTab(tab));
+    tab.addEventListener('keydown', (event) => {
+      let nextIndex = index;
+      if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+      else if (event.key === 'Home') nextIndex = 0;
+      else if (event.key === 'End') nextIndex = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      activateTab(tabs[nextIndex], true);
+    });
+  });
+})();
+
+// The static demo has no waitlist API yet, so open an email draft with the address.
+(() => {
+  const form = document.querySelector('.waitlist-form');
+  if (!form) return;
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const email = form.querySelector('input[type="email"]')?.value.trim();
+    if (!email) return;
+    const message = form.querySelector('.waitlist-form-message');
+    if (message) message.textContent = 'Opening your email app to send your waitlist request.';
+    const subject = encodeURIComponent('Zervy waitlist request');
+    const body = encodeURIComponent(`Please add ${email} to the Zervy waitlist.`);
+    window.location.href = `mailto:support@zervy.com?subject=${subject}&body=${body}`;
+  });
+})();
 
