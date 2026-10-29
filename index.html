@@ -9,7 +9,18 @@
 <body>
    <div class="custom-cursor" ></div>
 
-     <img id="logo-home" src="images/Logo-black.png" alt="Zervy Logo" class="logo-home" />    
+  <header class="site-header">
+    <a class="header-brand" href="#home" aria-label="Zervy home"><img id="logo-home" src="images/Logo-black.png" alt="Zervy Logo" class="logo-home" /></a>
+    <div class="header-actions">
+      <a class="waitlist-glass" href="#waitlist">Join Our Waitlist <span aria-hidden="true">↗</span></a>
+      <div class="hamburger-wrapper">
+        <span class="menu-label">MENU</span>
+        <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="overlay-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
   <!-- Overlay Menu -->
   <div id="overlay-menu">
@@ -36,16 +47,6 @@
 </div>
 
     </div>
-  </div>
-
-  <a class="waitlist-glass" href="#waitlist">Join Our Waitlist <span aria-hidden="true">↗</span></a>
-
-  <!-- Hamburger Icon -->
-   <div class="hamburger-wrapper">
-       <span class="menu-label">MENU</span>
-  <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
-  </div>
   </div>
 
 <!-- Hero Section -->
@@ -111,7 +112,14 @@
 <section class="features-section" id="features">
   <h2 class="features-title">Get to know Zervy.</h2>
 
-  <div class="features-rail">
+  <div class="carousel-controls" aria-label="Feature carousel controls">
+    <span class="carousel-position" aria-live="polite">Explore all six feature pillars</span>
+    <div class="carousel-arrows">
+      <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Scroll to previous features">←</button>
+      <button class="carousel-arrow" type="button" data-carousel-next aria-label="Scroll to next features">→</button>
+    </div>
+  </div>
+  <div class="features-carousel" id="featuresCarousel" aria-label="Zervy features">
     <!-- 1 -->
     <article
       class="feature-card"
@@ -201,6 +209,65 @@
       <button class="feature-learn-more" aria-label="Learn more about Live Tracking" type="button">Learn More <span aria-hidden="true">→</span></button>
     </article>
 
+    <!-- 4 -->
+    <article class="feature-card" tabindex="0" role="group" aria-label="Safety feature"
+      data-kicker="Safety"
+      data-title="Built-in protection."
+      data-subtitle="Emergency tools."
+      data-detail="Quick access to emergency support, trusted contact sharing, and safety tools designed to help protect customers and providers."
+      data-image-src="/assets/cards/safety.png"
+      data-image-fallback="images/toggle.png"
+      data-img-main="/assets/cards/safety.png"
+      data-img-1="images/toggle.png"
+      data-img-2="images/toggle-night.png">
+      <div class="feature-top">
+        <p class="feature-kicker">Safety</p>
+        <h3 class="feature-headline">Built-in protection</h3>
+        <p class="feature-subcopy">Emergency tools</p>
+      </div>
+      <div class="feature-media"><img class="feature-img" src="images/toggle.png" alt="Safety feature preview" loading="lazy" /></div>
+      <button class="feature-learn-more" aria-label="Learn more about Safety" type="button">Learn More <span aria-hidden="true">→</span></button>
+    </article>
+
+    <!-- 5 -->
+    <article class="feature-card" tabindex="0" role="group" aria-label="Verification feature"
+      data-kicker="Verification"
+      data-title="Verified providers."
+      data-subtitle="Trust first."
+      data-detail="Provider verification helps customers understand who they are booking and supports a more trusted service marketplace."
+      data-image-src="/assets/cards/verification.png"
+      data-image-fallback="images/toggle-night.png"
+      data-img-main="/assets/cards/verification.png"
+      data-img-1="images/toggle.png"
+      data-img-2="images/medium.png">
+      <div class="feature-top">
+        <p class="feature-kicker">Verification</p>
+        <h3 class="feature-headline">Verified providers</h3>
+        <p class="feature-subcopy">Trust first</p>
+      </div>
+      <div class="feature-media"><img class="feature-img" src="images/toggle-night.png" alt="Provider verification feature preview" loading="lazy" /></div>
+      <button class="feature-learn-more" aria-label="Learn more about Verification" type="button">Learn More <span aria-hidden="true">→</span></button>
+    </article>
+
+    <!-- 6 -->
+    <article class="feature-card" tabindex="0" role="group" aria-label="Payments feature"
+      data-kicker="Payments"
+      data-title="Secure payments."
+      data-subtitle="Scam-resistant flow."
+      data-detail="Protected payment flows help customers and providers transact with more confidence and keep bookings straightforward."
+      data-image-src="/assets/cards/payments.png"
+      data-image-fallback="images/medium.png"
+      data-img-main="/assets/cards/payments.png"
+      data-img-1="images/feature.png"
+      data-img-2="images/Shot.png">
+      <div class="feature-top">
+        <p class="feature-kicker">Payments</p>
+        <h3 class="feature-headline">Secure payments</h3>
+        <p class="feature-subcopy">Scam-resistant flow</p>
+      </div>
+      <div class="feature-media"><img class="feature-img" src="images/medium.png" alt="Secure payments feature preview" loading="lazy" /></div>
+      <button class="feature-learn-more" aria-label="Learn more about Payments" type="button">Learn More <span aria-hidden="true">→</span></button>
+    </article>
   </div>
 </section>
 

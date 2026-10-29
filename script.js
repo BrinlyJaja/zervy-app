@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   hamburger.addEventListener("click", () => {
     menuOpen = !menuOpen;
+    hamburger.setAttribute("aria-expanded", String(menuOpen));
+    hamburger.setAttribute("aria-label", menuOpen ? "Close menu" : "Open menu");
 
     if (menuOpen) {
       // Animate hamburger to X
@@ -228,6 +230,20 @@ gsap.to(".scroll-indicator", {
       closeModal();
     }
   });
+})();
+
+// Native horizontal scrolling with page-sized previous/next controls.
+(() => {
+  const carousel = document.getElementById('featuresCarousel');
+  const previous = document.querySelector('[data-carousel-prev]');
+  const next = document.querySelector('[data-carousel-next]');
+  if (!carousel || !previous || !next) return;
+
+  const scrollCarousel = (direction) => {
+    carousel.scrollBy({ left: direction * carousel.clientWidth * 0.82, behavior: 'smooth' });
+  };
+  previous.addEventListener('click', () => scrollCarousel(-1));
+  next.addEventListener('click', () => scrollCarousel(1));
 })();
 
 // Audience tabs support pointer and keyboard navigation.
