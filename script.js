@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     menuOpen = !menuOpen;
     hamburger.setAttribute("aria-expanded", String(menuOpen));
     hamburger.setAttribute("aria-label", menuOpen ? "Close menu" : "Open menu");
+    hamburger.closest('.site-header')?.classList.toggle('menu-open', menuOpen);
 
     if (menuOpen) {
       // Animate hamburger to X
@@ -99,11 +100,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const cursor = document.querySelector('.custom-cursor');
+const supportsTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-document.addEventListener('mousemove', (e) => {
-  cursor.style.left = `${e.clientX}px`;
-  cursor.style.top = `${e.clientY}px`;
-});
+if (cursor && !supportsTouch && window.matchMedia('(pointer: fine)').matches) {
+  document.addEventListener('mousemove', (event) => {
+    cursor.style.left = `${event.clientX}px`;
+    cursor.style.top = `${event.clientY}px`;
+  }, { passive: true });
+}
 
 gsap.fromTo(
   ".scroll-arrow",
