@@ -1324,6 +1324,58 @@ html { scroll-behavior: smooth; }
   .custom-cursor { display: none !important; }
 }
 
+/* Keep the viewport, overlay and open header on one shared menu surface. */
+html.menu-open,
+body.menu-open,
+.site-header.menu-open,
+.site-header.menu-open .waitlist-glass,
+#overlay-menu {
+  background-color: #171717;
+}
+html.menu-open,
+body.menu-open { overscroll-behavior: none; }
+.site-header.menu-open {
+  border: 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transition: none;
+}
+.site-header.menu-open .waitlist-glass {
+  border: 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+#overlay-menu {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  box-sizing: border-box;
+  z-index: 50;
+  padding: 0;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  border: 0;
+  box-shadow: none;
+  transform: translateY(-100%);
+  transition: none;
+}
+.site-header { z-index: 51; }
+html.menu-open, body.menu-open { background: #171717 !important; }
+html.menu-open::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  display: block;
+  background: #171717;
+  pointer-events: none;
+}
+
 /* Keep the directory search as one seamless horizontal pill. */
 .directory-search {
   position: relative;
