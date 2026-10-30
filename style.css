@@ -300,9 +300,12 @@ body, html {
   transform: scale(1.5);
 }
 
-body,
-* {
-  cursor: none !important;
+@media (hover: hover) and (pointer: fine) {
+  body, * { cursor: none !important; }
+}
+@media (pointer: coarse), (max-width: 767px) {
+  .custom-cursor { display: none !important; }
+  html, body, body *, body *::before, body *::after { cursor: auto !important; }
 }
 
 .hero {
@@ -935,9 +938,10 @@ html { scroll-behavior: smooth; }
 
 /* Show all six feature pillars together on wider screens. */
 .site-header {
-  position: absolute;
-  inset: 0 0 auto;
-  z-index: 1001;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  margin-bottom: -86px;
   box-sizing: border-box;
   width: 100%;
   min-height: 86px;
@@ -947,6 +951,7 @@ html { scroll-behavior: smooth; }
   justify-content: space-between;
   gap: 24px;
 }
+#overlay-menu { z-index: 40; height: 100vh; height: 100dvh; overflow-y: auto; }
 .header-brand { display: inline-flex; align-items: center; flex: 0 0 auto; }
 .site-header .logo-home { position: static; display: block; width: 116px; height: auto; }
 .header-actions { display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
@@ -1251,6 +1256,9 @@ html { scroll-behavior: smooth; }
 .feature-modal-img { max-width: 100%; }
 @media (max-width: 767px) {
   .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
     min-height: calc(72px + env(safe-area-inset-top, 0px));
     margin-bottom: calc(-72px - env(safe-area-inset-top, 0px));
     padding-top: calc(14px + env(safe-area-inset-top, 0px));
@@ -1280,8 +1288,7 @@ html { scroll-behavior: smooth; }
     bottom: auto;
     left: 12px;
     width: auto;
-    max-height: 90vh;
-    max-height: 90dvh;
+    max-height: calc(100dvh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 24px);
     overflow-y: auto;
     border-radius: 22px;
     padding: 16px;
